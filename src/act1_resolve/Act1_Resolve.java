@@ -31,11 +31,22 @@ public class Act1_Resolve {
         fechas.add(new Date(2015, 11, 31)); fechas.add(new Date(2001, 5, 9));
         
         System.out.println("p2: "+act.number_in_month(fechas, 11));
+        
         List<Integer> meses = new ArrayList<>();
         meses.add(1);
         meses.add(11);
         meses.add(8);
         System.out.println("p3: "+act.number_in_months(fechas, meses));
+        
+        System.out.println("p4");
+        List<Date> p4=act.dates_in_month(fechas, 11);
+        if(p4!=null){
+            for (int i = 0; i < p4.size(); i++) {
+                Date get = p4.get(i);
+                System.out.println(get.getYear()+"/"+get.getMonth()+"/"+get.getDay());
+            }
+        }
+        
     }
     
 }

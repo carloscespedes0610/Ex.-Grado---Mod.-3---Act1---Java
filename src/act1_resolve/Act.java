@@ -5,6 +5,7 @@
  */
 package act1_resolve;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,12 +15,10 @@ import java.util.List;
  */
 public class Act {
     
-    private int c_number_in_month;
-    private int cs_number_in_months;
+    private List<Date> fecha_aux;
 
     public Act() {
-        c_number_in_month=0;
-        cs_number_in_months=0;
+        fecha_aux=new ArrayList<>();
     }
     
     
@@ -48,9 +47,22 @@ public class Act {
         if(meses == null || meses.isEmpty()){
             return 0;
         }else{
-            cs_number_in_months+= number_in_month(fechas, meses.get(0)) + 
+            return number_in_month(fechas, meses.get(0)) + 
                     number_in_month(fechas, meses.subList(1, meses.size()).get(0));
-            return cs_number_in_months;
+        }
+    }
+    
+    public List<Date> dates_in_month (List<Date> fechas, int mes){
+        if(fechas==null || fechas.isEmpty()){
+            return null;
+        }else{
+            if(fechas.get(0).getMonth()==mes){
+                fecha_aux.add(fechas.get(0));
+            }
+            dates_in_month(fechas.subList(1, fechas.size()), mes);
+            
+            return fecha_aux;
+            
         }
     }
 }
